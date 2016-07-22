@@ -1,0 +1,44 @@
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+.listContainer {
+            border:2px solid #ccc;
+            width:340px;
+            height: 225px;
+            overflow-y: scroll;
+            margin-top: 20px;
+            padding-left: 10px;
+        }
+
+.oddRow {
+            margin-top: 5px;
+            background-color: #3EB249;
+        }
+
+.evenRow{
+            margin-top: 5px;
+            background-color: #3EB249;
+        }
+.myCheckbox input {
+    display: none;
+}
+
+.myCheckbox span {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url("link_to_image");
+}
+
+.myCheckbox input:checked + span {
+    background: url("link_to_another_image");
+}
+
+.nowrap {
+  white-space: nowrap ;
+}

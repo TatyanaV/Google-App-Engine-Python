@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="jquery.ddslick.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<body style = "background-color:#FAEBD7">
+	<div data-role="page" >
+		<div data-role="header" data-position="fixed" style= "background-color: green; color: #FFFAF0;">
+			<h1 style= "background-color:  green; color: color: #FFFFF0;" > <font size="12"> Add F<img src="4.png" style="width:60px;height:50px;"><img src="3.png" style="width:60px;height:50px;">d Review </font></h1>
+		<div data-role="navbar" style= "background-color:#3CB371">
+			<ul>
+    		<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/view2"  style= "background-color: #009747; color: #FFFFF0" >Menu</a></font></li></h1>
+			<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/add2"  style= "background-color: #009747; color: #FFFFF0" >Add Food to the Menu</a></font></li></h1>
+        	<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/view"  style= "background-color: #009747; color: #FFFFF0" >View Food Reviews</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/add"  style= "background-color: #009747; color: #FFFFF0" >Add ALL Food Review</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/sorted_reviews"  style= "background-color: #009747; color: #FFFFF0" >View Reviews Sorted Per Dish</a></font></li></h1>
+			</ul>
+		</div><!-- /navbar -->
+		</div><!-- /header -->	
+
+		<form enctype="multipart/form-data" data-ajax='false' id = "myform" action="/enter" method="post">
+			<fieldset>
+	
+		
+	
+			  <h1> CHOOSE FOOD FROM THE DROPDOWN MENU THAT YOU WANT TO REVIEW </h1>
+			  
+			  		  <select name="restraunt4" id="restraunt4" placeholder="restraunt4" required>
+			  <option value="" name="action"></option>
+			  
+			  {% for restaurant in contacts  %}
+				<option value="{{ restaurant.name }}">{{ restaurant.name }} <img data-imagesrc="data:image/png;base64,{{ restaurant.photo }}" alt=""/></option>
+			  {% endfor %}
+
+			</select>
+	
+			</fieldset>
+			<!-- review of the food  -->	
+			<fieldset > 
+				<label for="food_review"><b>Your Review:</b></label>
+				<textarea cols="40" rows="8" name="food_review" id="food_review" required></textarea>
+			</fieldset>
+			
+				<!-- food review  -->
+				<label for="food_rating"><b>Rating [1-5]:</b></label>
+				<fieldset> 
+				<td>
+				<label><input type='radio' name='food_rating' id="food_rating" value='1'><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a></label>
+				<label><input type='radio' name='food_rating' id="food_rating" value='2'><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a></label>
+				<label><input type='radio' name='food_rating' id="food_rating" value='3'><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a></label>
+				<label><input type='radio' name='food_rating' id="food_rating" value='4'><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a></label>
+				<label><input type='radio' name='food_rating' id="food_rating" value='5' checked='checked'><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a></label>
+				</td>
+			</fieldset>
+			<!-- chekmark if its worth trying  -->
+			<fieldset> 
+		
+			<fieldset> 
+				<label for="place_checkmark"><b>Place a Check-Mark if its Worth Trying</b></label>
+				
+				<input type='checkbox' name='place_checkmark' id="place_checkmark" checked='checked' value='active' style= "background-color:   #3EB249" >
+
+			</fieldset>
+			</fieldset>
+			
+			
+			<div>
+				<input type="hidden" value="add" name="action">
+				<button name="id" type="submit" value="0" style="background-color: #009933; color: #FFFAF0;">Submit</button>
+			</div>
+		</form><!-- /form -->
+		<footer style="clear:both;"><br><div style="font-size:0.85em;clear:both;border-top:solid green">Tatyana Vlaskin - Assignment 3 - CS496 Winter 2016</div>
+    </footer>
+		</div><!-- /content -->
+	</div><!-- /page -->
+
+</body>
+</html>
+{% endautoescape %}

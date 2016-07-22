@@ -1,0 +1,122 @@
+<!--
+tatyana vlaskin
+template adopted from:
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+	<script type="text/javascript" src="jquery.ddslick.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body style = "background-color:#FAEBD7">
+	<div data-role="page" >
+		<div data-role="header" data-position="fixed">
+			<h1>View Menu</h1>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="/index" data-icon="home">Home</a></li>
+				<li><a href="/view2" data-icon="user">View Employees</a></li>
+				<li><a href="/add2" data-icon="action">Add Employees</a></li>
+				<li><a href="/add" data-icon="action">Add Check</a></li>
+				<li><a href="{{ logout_link }}" data-icon="lock">Logout</a></li>
+			</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->	
+	
+		<div data-role="content">
+		<form>
+			<input id="filterTable-input" data-type="search" placeholder="Filter Results">
+		</form>
+		<table data-role="table" id="dish_reviews-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+			<thead>
+				<tr>
+				<th>Photo of the Food</th>
+				<th>Name of the Dish</th>
+				<th>Your Review</th>
+				<th>Rating [1-5]</th>
+				<th>Worth Trying?</th>
+				<th>Delete</th>
+				<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for dish_reviews in dish_reviews %}
+					<tr>
+					<td>
+					{% for dish in view_dishes  %}
+						{% if dish_reviews.dish_link == dish.key %}
+						<img src="data:image/png;base64,{{ dish.photo }}" alt="{{ dish.name }}"/>
+						{% endif %}
+					{% endfor %}
+						
+					</td>
+					<!-- <td style="width:15%">{{ dish_reviews.food_name }}</td> -->
+					<td> 
+					{% for dish in view_dishes  %}
+						{% if dish_reviews.dish_link == dish.key %}
+						{{ dish.name }}
+						{% endif %}
+					{% endfor %}
+
+					
+					</td>
+					<td style="width:35%">{{ dish_reviews.food_review }}</td>
+					<td >
+					{% if dish_reviews.check_amount == '1' %}
+					<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+					{% elif dish_reviews.check_amount == '2' %}
+							
+					<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% elif dish_reviews.check_amount == '3' %}
+				
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% elif dish_reviews.check_amount == '4' %}
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% else %}
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+
+{% endif %}
+					</td>
+					<td >
+				{% if dish_reviews.place_checkmark %}
+								
+				
+				<a href="#" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext" style="display: inline-block">Check Icon</a>
+			{% else %}
+				No
+			{% endif %}
+				<td style="width:5%">
+						<form action="/enter" method="post">
+						<input type="hidden" value="delete" name="action">
+						<button name="id" type="submit" value="{{ dish_reviews.key.id() }}" data-role="button" data-icon="delete" data-iconpos="notext"> Delete</a></button>
+
+						
+						</form>
+					</td>
+					<td style="width:5%">
+						<form action="/edit" method="post">
+						<button name="id" type="submit" value="{{ dish_reviews.key.id() }}" data-role="button" data-icon="edit" data-iconpos="notext"> Edit</a></button>
+						</form>
+					</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+		<footer style="clear:both;"><br><div style="font-size:0.85em;clear:both;border-top:solid rgb(160,82,45)">Tatyana Vlaskin - Final - CS496 Winter 2016</div>
+    </footer>		
+		</div><!-- /content -->
+	</div><!-- /page -->
+</body>
+</html>
+{% endautoescape %}

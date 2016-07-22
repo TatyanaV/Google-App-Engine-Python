@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	<link rel="stylesheet" href="/stylesheets/fluid-grid16-1100px.css">
+	<link rel="stylesheet" href="/stylesheets/eve-styles.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+
+
+
+<body style = "background-color:#FAEBD7">
+  onload="initialize()"
+	<div data-role="page" >
+		<div data-role="header" data-position="fixed" style= "background-color: green; color: #FFFAF0;">
+			<h1 style= "background-color:  	green; color: color: #FFFFF0;" > <font size="12"> View F<img src="4.png" style="width:60px;height:50px;"><img src="3.png" style="width:60px;height:50px;">d Menu</font></h1>
+		<div data-role="navbar" style= "background-color:#3CB371">
+			<ul>
+    		<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/view2"  style= "background-color: #009747; color: #FFFFF0" >Menu</a></font></li></h1>
+			<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/add2"  style= "background-color: #009747; color: #FFFFF0" >Add Food to the Menu</a></font></li></h1>
+        	<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/view"  style= "background-color: #009747; color: #FFFFF0" >View Food Reviews</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/add"  style= "background-color: #009747; color: #FFFFF0" >Add ALL Food Review</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/sorted_reviews"  style= "background-color: #009747; color: #FFFFF0" >View Reviews Sorted Per Dish</a></font></li></h1>
+			</ul>
+		</div><!-- /navbar -->
+		</div><!-- /header -->	
+	
+		<div data-role="content">
+		<form>
+			<input id="filterTable-input" data-type="search" placeholder="Filter Results">
+		</form>
+		
+					
+			
+				    <div class="grid-5 grid grey">
+					<h2> {{restaurant.name }}</h2>
+					<p class="quote"> <img width="280" height="190" src="data:image/png;base64,{{ restaurant.photo }}" alt="{{ restaurant.name }}"  /> </p>
+					</div>
+				<!--http://stackoverflow.com/questions/8536653/onclick-on-a-image-to-navigate-to-another-page-using-javascript-->
+				<!--
+				function imageClick(url) {
+					window.location = url;
+				}
+
+<img src="../images/bottle.jpg" alt="bottle" class="thumbnails" onclick="imageClick('../images/bottle.html')" />
+
+-->
+					
+		
+		
+				<table data-role="table" id="food-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+			<thead>
+				<tr style= "background-color:   #3EB249">
+				<th>Your Review</th>
+				<th>Rating [1-5]</th>
+				<th>Worth Trying?</th>
+				<th>Delete</th>
+				<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for food in foods %}
+					<tr>
+					<td>
+					{% for restaurant in contacts  %}
+						{% if food.restraunt2 == restaurant.key %}
+						<img src="data:image/png;base64,{{ restaurant.photo }}" alt="{{ restaurant.name }}"/>
+						{% endif %}
+					{% endfor %}
+						
+					</td>
+					<!-- <td style="width:15%">{{ food.food_name }}</td> -->
+					<td> 
+					{% for restaurant in contacts  %}
+						{% if food.restraunt2 == restaurant.key %}
+						{{ restaurant.name }}
+						{% endif %}
+					{% endfor %}
+
+					
+					</td>
+					<td style="width:35%">{{ food.food_review }}</td>
+					<td >
+					{% if food.food_rating == '1' %}
+					<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+					{% elif food.food_rating == '2' %}
+							
+					<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% elif food.food_rating == '3' %}
+				
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% elif food.food_rating == '4' %}
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+				{% else %}
+				<a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a><a href="#" class="ui-btn ui-corner-all ui-icon-heart ui-btn-icon-notext" style="display: inline-block"></a>
+
+{% endif %}
+					</td>
+					<td >
+				{% if food.place_checkmark %}
+								
+				
+				<a href="#" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-notext" style="display: inline-block">Check Icon</a>
+			{% else %}
+				No
+			{% endif %}
+				<td style="width:5%">
+						<form action="/enter" method="post">
+						<input type="hidden" value="delete" name="action">
+						<button name="id" type="submit" value="{{ food.key.id() }}" data-role="button" data-icon="delete" data-iconpos="notext"> Delete</a></button>
+
+						
+						</form>
+					</td>
+					<td style="width:5%">
+						<form action="/edit" method="post">
+						<button name="id" type="submit" value="{{ food.key.id() }}" data-role="button" data-icon="edit" data-iconpos="notext"> Edit</a></button>
+						</form>
+					</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+		
+		<footer style="clear:both;"><br><div style="font-size:0.85em;clear:both;border-top:solid green">Tatyana Vlaskin - Assignment 3 - CS496 Winter 2016</div>
+    </footer>		
+		</div><!-- /content -->
+	</div><!-- /page -->
+</body>
+</html>
+{% endautoescape %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<body style = "background-color:#FAEBD7">
+	<div data-role="page" >
+		<div data-role="header" data-position="fixed" style= "background-color: green; color: #FFFAF0;">
+			<h1 style= "background-color:  green; color: color: #FFFFF0;" > <font size="12"> Add F<img src="4.png" style="width:60px;height:50px;"><img src="3.png" style="width:60px;height:50px;">d to the Menu</font></h1>
+		<div data-role="navbar" style= "background-color:#3CB371">
+			<ul>
+    		<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/view2"  style= "background-color: #009747; color: #FFFFF0" >Menu</a></font></li></h1>
+			<h1 style= "background-color: #3EB249;" ><li><font size="4"><a href="/add2"  style= "background-color: #009747; color: #FFFFF0" >Add Food to the Menu</a></font></li></h1>
+        	<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/view"  style= "background-color: #009747; color: #FFFFF0" >View Food Reviews</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/add"  style= "background-color: #009747; color: #FFFFF0" >Add ALL Food Review</a></font></li></h1>
+			<h1 style= "background-color: #D2691E;" ><li><font size="4"><a href="/sorted_reviews"  style= "background-color: #009747; color: #FFFFF0" >View Reviews Sorted Per Dish</a></font></li></h1>
+			</ul>
+		</div><!-- /navbar -->
+		</div><!-- /header -->	
+	
+		<div data-role="content">
+		<form enctype="multipart/form-data" data-ajax='false' id = "myform" action="/enter" method="post">
+			<fieldset > 
+				<label for="name"><b>Name of the Dish:</b></label>
+				<input type="text" name="name" id="name" value="" required>
+			</fieldset>
+
+			<fieldset > 
+				<label for="restaratunt_review"><b>Description of the Dish:</b></label>
+				<textarea cols="40" rows="8" name="restaratunt_review" id="restaratunt_review" required></textarea>
+			</fieldset>
+			<!-- price of the food -->
+		<fieldset > 
+				<label for="rating"><b>Price [$]:</b></label>
+				<input type="number" step="any" name="rating" id="rating" required/>
+				<!--<textarea cols="40" rows="8" name="rating" id="rating" required></textarea>-->
+			</fieldset>
+			<!-- photo of the food -->
+			<fieldset > 
+				<label for="photo"><b>Photo of the dish:</b></label>
+				<input type="file" name="photo" id="photo">
+			</fieldset>
+			
+
+			<td> </td></td>
+			<div>
+				<input type="hidden" value="add2" name="action">
+				<button name="id" type="submit" value="0" style="background-color: #009933; color: #FFFAF0;">Submit</button>
+			</div>
+		</form><!-- /form -->
+		<footer style="clear:both;"><br><div style="font-size:0.85em;clear:both;border-top:solid green">Tatyana Vlaskin - Assignment 3 - CS496 Winter 2016</div>
+    </footer>
+		</div><!-- /content -->
+	</div><!-- /page -->
+
+</body>
+</html>
+{% endautoescape %}

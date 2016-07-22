@@ -1,0 +1,171 @@
+<!--
+tatyana vlaskin
+template adopted from:
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+{% autoescape true %}
+<html>
+	<head>
+		<!--tages-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Steel Industry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!--fonts-->
+		<link href='//fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
+		<link href='//fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+			<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/responsiveslides.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/swipebox.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<!--start-wrap-->
+		<div class="header">
+		<div class="container">
+			<!--start-header-->
+				<!--start-logo-->
+				<div class="logo">
+					<a href="index.html">Add Check</a>
+				</div>
+				<!--End-logo-->
+				<div class="clearfix"> </div>
+				<!--End-top-nav-->
+			</div>
+			<!--End-header-->
+		</div>
+		<div class="top-nav">
+				<div class="container">
+					<div class="navbar-header">
+	   			 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+                </button>
+              </div>
+	   			<div id="navbar" class="navbar-collapse collapse">
+	              <ul class="nav navbar-nav">
+	                  <li class="home"><a href="/index">Home</a></li>
+					  <li class=""><a href="/add2">Add Employee</a></li>
+					  <li class=""><a href="/view2">View Employees</a></li>
+					  <li class=""><a href="/add">Add Check</a></li>
+					  <li class=""><a href="{{ logout }}">Logout</a></li>	        
+	              </ul>
+	            </div>
+				</div>
+			</div>
+			
+			
+			
+			
+	<div class="content">
+		<div class="container">
+			<!--start-contact-->
+			<div class="contact">
+				<div class="section group">				
+	
+				<div class="col-md-8 col span_2_of_3">
+				  <div class="contact-form">
+							
+					
+				<div>
+	
+					
+							 <form enctype="multipart/form-data" data-ajax='false' id = "myform" action="/enter" method="post">
+							 <span><label for="place_checkmark">CHOSE EMPLOYEE</label></span>
+							 <div  style = "font-size : 15px;"> If you do not see Employee, add Employee first </div>
+				  
+			  		<span>  <select name="dish_for_review" id="dish_for_review" placeholder="dish_for_review" required style="display: block; width: 100%; height:40px;">
+			  <option value="" name="action"></option>
+			  
+			  {% for dish in view_dishes  %}
+				<option value="{{ dish.name }}">{{ dish.name }}</option>
+			  {% endfor %}
+
+			</select> </span>
+	
+			</div>
+						
+						
+						
+						
+						
+						
+						
+						    <div>
+						    	<span><label for="place_checkmark">DATE CHECK WAS ISSUED</label></span>
+						    	<span><input type="text" style="display: block; width: 100%; height:40px;" name="place_checkmark" id="place_checkmark" value="" required></span>
+						    </div>
+							
+
+							
+							
+							
+							
+							
+							
+							
+						<div>
+						     	<span><label for="check_amount">AMOUNT [$]</label></span>
+						    	<span><input type='number' step="any"  name="check_amount" id="check_amount" value="" required style="display: block; width: 100%; height:40px;"></span>
+						    </div>
+							
+							
+
+							
+							
+						
+			<div>
+				<span><input type="hidden" value="add" name="action"></span>
+				<span><button name="id" type="submit" value="0" style="display: block; width: 100%;background-color:#1589FF; height:45px; color:white; font-size : 25px;font-weight: bold;">SUBMIT</button></span>
+
+							
+							
+						
+						
+			</form><!-- /form -->
+		<footer style="clear:both;"><br><div style="font-size:0.85em;clear:both;border-top:solid grey">Tatyana Vlaskin - Final - CS496 Winter 2016</div> </footer>	
+						
+						
+						
+						
+						
+
+				 
+			
+  							
+			  
+			</div>
+			<!--End-contact-->
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+
+	</body>
+</html>
+
+{% endautoescape %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
